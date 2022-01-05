@@ -36,11 +36,9 @@ def get_members():
 @app.route('/member/<int:id>', methods=['GET'])
 def get_member_by_id(id):
     _id = id
-    members = jackson_family.get_all_members()
+    member = jackson_family.get_member(_id)
 
-    if any(member['id'] == _id for member in members):
-        member = jackson_family.get_member(_id)
-
+    if member:
         response_body = {
             "member": member
         }
@@ -71,7 +69,7 @@ def add_member():
         "lucky_numbers": lucky_numbers
     }
 
-    if name == '' or name == None or age == None or type(name) is not str or type(age) is not int:
+    if name == '' or name is None or age is None or type(name) is not str or type(age) is not int:
         response_body = {
             "msg": "Bad request. Please check the information submited"
         }
@@ -89,10 +87,10 @@ def add_member():
 @app.route('/delete-member/<int:id>', methods=['DELETE'])
 def delete_family_member(id):
     _id = id
-    members = jackson_family.get_all_members()
+    member_to_delete = jackson_family.get_member(_id)
 
-    if any(member['id'] == _id for member in members):
-            member = jackson_family.delete_member(_id)
+    if member_to_delete:
+            jackson_family.delete_member(_id)
 
             response_body = {
                 "msg": "Member deleted!"
@@ -114,16 +112,16 @@ def update_selected_member(id):
     _id = id
     name = request.json.get("name")
     age = request.json.get("age")
-    members = jackson_family.get_all_members()
+    member = jackson_family.get_member(id)
 
-    if name == '' or name == None or age == None or type(name) is not str or type(age) is not int:
+    if name == '' or name is None or age is None or type(name) is not str or type(age) is not int:
             response_body = {
                 "msg": "Bad request. Please check the information submited"
             }
 
             return jsonify(response_body), 400 
 
-    if any(member['id'] == _id for member in members):
+    if member:
             jackson_family.update_member(_id, name, age)
 
             response_body = {

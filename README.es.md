@@ -1,3 +1,7 @@
+This is my version of the original excersise. I added the update endpoint and also the implementation is slightly different from what the test expects.
+
+It doesn't pass the original test but I think this is a more complete version of the exercise.
+
 # ![alt text](https://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=breathecode,32) Family Static API
 
 ¡La familia "Jackson" necesita una API estática! Necesitamos construir las *estructuras de datos (data structures)* y crear un API endpoint para interactuar con él utilizando [Hoppscotch](https://hoppscotch.io/) (recomendado) o Postman.

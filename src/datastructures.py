@@ -6,7 +6,7 @@ update this file to implement the following already declared methods:
 - update_member: Should update a member from the self._members list
 - get_member: Should return a member from the self._members list
 """
-from random import randint
+from random import randint, sample
 
 class FamilyStructure:
     def __init__(self, last_name):
@@ -19,21 +19,21 @@ class FamilyStructure:
                 "first_name" : "John",
                 "last_name" :  last_name,
                 "age" : "33 years old",
-                "lucky_numbers": tuple(random.sample(range(0, 100), 3))
+                "lucky_numbers": tuple(sample(range(0, 100), 3))
             },
             {
                 "id" : self._generateId(),
                 "first_name" : "Jane",
                 "last_name" : last_name,
                 "age" : "35 years old",
-                "lucky_numbers": tuple(random.sample(range(0, 100), 3))
+                "lucky_numbers": tuple(sample(range(0, 100), 3))
             },
             {
                 "id" : self._generateId(),
                 "first_name" : "Jimmy",
                 "last_name" : last_name,
                 "age" : "5 years old",
-                "lucky_numbers": tuple(random.sample(range(0, 100), 3))
+                "lucky_numbers": tuple(sample(range(0, 100), 3))
             } 
         ]
 
